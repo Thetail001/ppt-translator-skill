@@ -18,10 +18,11 @@ A professional-grade PowerPoint translation tool powered by Large Language Model
 
 ### 🛠️ Installation
 
+#### As a Standalone Tool
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Thetail001/ppt-translator.git
-   cd ppt-translator/scripts
+   git clone https://github.com/Thetail001/ppt-translator-skill.git
+   cd ppt-translator-skill/scripts
    ```
 
 2. **Set up Virtual Environment**:
@@ -39,6 +40,12 @@ A professional-grade PowerPoint translation tool powered by Large Language Model
    - Create a `.env` file in the `scripts/` directory.
    - Add your keys: `DEEPSEEK_API_KEY=your_key_here`.
 
+#### As a Gemini CLI Skill
+If you are using the [Gemini CLI](https://github.com/google/gemini-cli), you can install this repository as a skill to enable AI-powered PPT translation directly in your chat:
+```bash
+gemini skills install https://github.com/Thetail001/ppt-translator-skill.git
+```
+
 ### 📖 Usage
 
 **Standard Translation**:
@@ -51,6 +58,27 @@ If you need to unify font colors after translation (e.g., set all to white):
 ```bash
 python change_color.py "path/to/translated.pptx" FFFFFF
 ```
+
+### ⚙️ Parameters
+
+| Parameter | Description |
+| :--- | :--- |
+| `input_path` | Target .pptx file path |
+| `--provider` | Translation provider (Default: `deepseek`) |
+| `--source-lang`| Source language (Default: `en`) |
+| `--target-lang`| Target language (Default: `zh`) |
+| `--max-workers`| Number of slides to process in parallel (Default: 4) |
+
+### ⚠️ Limitations & Roadmap
+
+Currently, to ensure the maximum stability of the generated `.pptx` files and avoid "Repair Needed" errors, the following features are temporarily disabled:
+- **Geometry Modifications**: Automatic adjustment of shape width, height, or position.
+- **Paragraph Spacing**: Modification of line spacing (`spcPct`).
+
+**Future Plans**:
+- [ ] **Smart Auto-scaling**: Dynamically adjust font size based on text length.
+- [ ] **Stability Fixes**: Investigate safer ways to re-enable geometry and spacing modifications without corrupting the XML structure.
+- [ ] **Table Enhancements**: Better support for complex merged cells.
 
 ### 🙏 Acknowledgments
 
@@ -74,10 +102,11 @@ This project is modified from the original work by [tristan-mcinnis/PPT-Translat
 
 ### 🛠️ 安装步骤
 
+#### 作为独立工具使用
 1. **克隆仓库**:
    ```bash
-   git clone https://github.com/Thetail001/ppt-translator.git
-   cd ppt-translator/scripts
+   git clone https://github.com/Thetail001/ppt-translator-skill.git
+   cd ppt-translator-skill/scripts
    ```
 
 2. **设置虚拟环境**:
@@ -94,6 +123,12 @@ This project is modified from the original work by [tristan-mcinnis/PPT-Translat
 3. **配置 API 密钥**:
    - 在 `scripts/` 目录下创建 `.env` 文件。
    - 填写您的密钥：`DEEPSEEK_API_KEY=您的密钥`。
+
+#### 作为 Gemini CLI 技能安装
+如果您正在使用 [Gemini CLI](https://github.com/google/gemini-cli)，可以直接将此仓库安装为技能，从而在对话中直接调用 PPT 翻译功能：
+```bash
+gemini skills install https://github.com/Thetail001/ppt-translator-skill.git
+```
 
 ### 📖 使用说明
 
@@ -118,9 +153,21 @@ python change_color.py "翻译后的PPT路径.pptx" FFFFFF
 | `--target-lang`| 目标语言 (Default: `zh`) |
 | `--max-workers`| 并行处理的幻灯片数量 (Default: 4) |
 
+### ⚠️ 局限性与后续规划
+
+目前为了确保生成的 PPT 文件具有最高的稳定性，避免出现“需要修复”的报错，我们暂时去除了以下功能：
+- **几何属性修改**：自动调整形状的宽度、高度或位置。
+- **行间距调整**：修改段落的行间距属性 (`line_spacing`)。
+
+**后续计划**：
+- [ ] **智能字体缩放**：根据翻译后的文字长度自动微调字体大小。
+- [ ] **稳定性修复**：探索更安全的方式来重新开启几何属性和间距修改，同时不破坏 PPT 的 XML 结构。
+- [ ] **表格增强**：优化对复杂合并单元格的处理逻辑。
+
 ### 🙏 致谢
 
 本项目修改自 [tristan-mcinnis/PPT-Translator-Formatting-Intact-with-LLMs](https://github.com/tristan-mcinnis/PPT-Translator-Formatting-Intact-with-LLMs)。针对实际使用场景，我进行了一些适配和改进，包括递归处理组合形状、改进回填逻辑以及加入防止 PPT 文件损坏的安全策略。
 
 ## 📄 License
+
 MIT License.
