@@ -1,0 +1,22 @@
+# Environments
+.venv/
+env/
+venv/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Translation Local Data
+translation_cache.json
+
+# Temporary / Intermediate Files
+*.xml
+*.log
+
+# Outputs
+*_translated.pptx
+*_colored.pptx
+*_original.pptx

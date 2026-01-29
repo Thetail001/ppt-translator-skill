@@ -1,0 +1,6 @@
+openai
+anthropic
+google-genai
+python-pptx>=0.6.21
+python-dotenv
+pytest
